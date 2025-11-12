@@ -8,20 +8,21 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    /* Fondo degradado "morado y azul oscuro" */
-    background: linear-gradient(135deg, #1d2b64, #4a00e0);
+    /* CAMBIO: Fondo degradado "morado a morado" */
+    background: linear-gradient(135deg, #3a0ca3, #7209b7);
 }
 
 .container {
     text-align: center;
-    /* Color de tarjeta modo oscuro */
-    background-color: #1e1e2f; 
+    /* CAMBIO: Color de tarjeta "azul oscuro" para contraste */
+    background-color: #1a233a; 
     color: #f0f0f0;
     padding: 3rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    /* Sombra más sutil */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease-in-out;
-    width: 350px; /* Un poco más de ancho */
+    width: 350px; 
 }
 
 .container:hover {
@@ -29,7 +30,6 @@ body {
 }
 
 h1 {
-    /* Color de texto principal claro */
     color: #ffffff;
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -39,27 +39,27 @@ input[type="text"] {
     width: 100%;
     padding: 12px 20px;
     margin-bottom: 20px;
-    /* Estilo de input oscuro */
-    background-color: #2a2a3f;
-    border: 2px solid #444;
+    /* CAMBIO: Estilo de input azul oscuro */
+    background-color: #26324d;
+    border: 2px solid #3d4e70;
     color: #f0f0f0;
     border-radius: 25px;
-    box-sizing: border-box; /* Importante para que el padding no desborde */
+    box-sizing: border-box; 
     transition: border-color 0.3s ease-in-out;
     font-size: 16px;
 }
 
 input[type="text"]:focus {
-    /* Borde morado al hacer foco */
-    border-color: #8a2be2;
+    /* CAMBIO: Borde morado vibrante al hacer foco */
+    border-color: #7209b7;
     outline: none;
 }
 
 button {
     padding: 12px 30px;
     border: none;
-    /* Degradado morado/azul para el botón */
-    background: linear-gradient(to right, #8a2be2, #007bff);
+    /* CAMBIO: Degradado morado/morado para el botón */
+    background: linear-gradient(to right, #7209b7, #560bad);
     color: white;
     border-radius: 25px;
     cursor: pointer;
@@ -69,18 +69,19 @@ button {
 }
 
 button:hover {
-    /* Intercambia el degradado al pasar el ratón */
-    background: linear-gradient(to right, #007bff, #8a2be2);
-    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+    /* CAMBIO: Intercambia el degradado morado */
+    background: linear-gradient(to right, #560bad, #7209b7);
+    /* Sombra morada */
+    box-shadow: 0 5px 15px rgba(114, 9, 183, 0.3);
 }
 
 #qrcode {
     margin: 30px auto 0;
     padding: 10px;
-    /* Borde oscuro para el contenedor del QR */
-    border: 2px dashed #444;
+    /* CAMBIO: Borde azul oscuro para el contenedor del QR */
+    border: 2px dashed #3d4e70;
     border-radius: 10px;
-    width: 256px; /* Ajustamos al tamaño del QR */
+    width: 256px; 
     height: 256px; 
     display: flex;
     justify-content: center;
@@ -93,12 +94,11 @@ button:hover {
     border-radius: 4px;
 }
 
-/* El botón de descarga */
+/* El botón de descarga (verde está bien para destacar) */
 #downloadBtn {
-    display: none; /* Oculto por defecto */
+    display: none; 
     margin-top: 20px;
     text-decoration: none;
-    /* Un color verde que destaca para "descargar" */
     background-color: #28a745;
     color: white;
     padding: 12px 30px;
