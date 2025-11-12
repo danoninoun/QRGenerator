@@ -1,0 +1,84 @@
+/* Fuente más moderna y fondo suave */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* La "tarjeta" principal */
+.generador-qr {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    width: 320px;
+    text-align: center;
+}
+
+.generador-qr h2 {
+    margin-top: 0;
+    color: #111;
+}
+
+.generador-qr p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* El campo de texto (input) */
+#urlInput {
+    width: calc(100% - 24px); /* 100% menos el padding */
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+#urlInput:focus {
+    outline: none;
+    border-color: #007bff; /* Se pone azul al hacer clic */
+}
+
+/* El botón de generar */
+#generarBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+#generarBtn:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}
+
+/* El contenedor donde irá el QR */
+#qrContenedor {
+    width: 256px;
+    height: 256px;
+    margin: 25px auto 0;
+    /* Borde suave por si está vacío */
+    border: 1px solid #eee; 
+    border-radius: 8px;
+    padding: 10px; /* Un pequeño margen interno */
+    box-sizing: border-box; /* Para que el padding no lo haga más grande */
+}
+
+/* El QR (la imagen) que genera la librería */
+#qrContenedor img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 4px;
+}
