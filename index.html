@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de QR</title>
+    <title>Generador de QR - Modo Oscuro</title>
     
     <!-- 1. Enlazamos nuestra hoja de estilos -->
     <link rel="stylesheet" href="style.css">
     
     <!-- 2. Importamos la LIBRERÍA que hace la magia -->
-    <!-- (Esta NO la descargamos, la usamos desde internet) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
     <!-- Esta es la estructura de la "tarjeta" -->
-    <div class="generador-qr">
-        <h2>Generador de QR</h2>
-        <p>Pega tu URL abajo y pulsa "Generar"</p>
+    <div class="container">
+        <h1>Generador de QR</h1>
         
         <input type="text" id="urlInput" placeholder="https://tu-pagina-web.com">
         
-        <button id="generarBtn">Generar QR</button>
+        <button id="generateBtn">Generar QR</button>
         
         <!-- Aquí es donde el script dibujará el código QR -->
-        <div id="qrContenedor"></div>
+        <div id="qrcode"></div>
+
+        <!-- 4. El nuevo botón/enlace de descarga -->
+        <!-- Empieza oculto y se muestra con JavaScript -->
+        <a id="downloadBtn">Descargar QR</a>
     </div>
 
     <!-- 3. Enlazamos NUESTRO script -->
-    <!-- Importante: Lo ponemos al final del <body> para que cargue después del HTML -->
     <script src="script.js"></script>
 </body>
 </html>

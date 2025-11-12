@@ -1,84 +1,124 @@
-/* Fuente más moderna y fondo suave */
+/* Importamos la fuente 'Poppins' que pediste */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f0f2f5;
-    display: grid;
-    place-items: center;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
     margin: 0;
-    color: #333;
+    /* Fondo degradado "morado y azul oscuro" */
+    background: linear-gradient(135deg, #1d2b64, #4a00e0);
 }
 
-/* La "tarjeta" principal */
-.generador-qr {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    width: 320px;
+.container {
     text-align: center;
+    /* Color de tarjeta modo oscuro */
+    background-color: #1e1e2f; 
+    color: #f0f0f0;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+    width: 350px; /* Un poco más de ancho */
 }
 
-.generador-qr h2 {
+.container:hover {
+    transform: scale(1.02);
+}
+
+h1 {
+    /* Color de texto principal claro */
+    color: #ffffff;
     margin-top: 0;
-    color: #111;
+    margin-bottom: 1.5rem;
 }
 
-.generador-qr p {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-/* El campo de texto (input) */
-#urlInput {
-    width: calc(100% - 24px); /* 100% menos el padding */
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.2s;
-}
-
-#urlInput:focus {
-    outline: none;
-    border-color: #007bff; /* Se pone azul al hacer clic */
-}
-
-/* El botón de generar */
-#generarBtn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+input[type="text"] {
     width: 100%;
-    margin-top: 15px;
-    transition: background-color 0.2s;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    /* Estilo de input oscuro */
+    background-color: #2a2a3f;
+    border: 2px solid #444;
+    color: #f0f0f0;
+    border-radius: 25px;
+    box-sizing: border-box; /* Importante para que el padding no desborde */
+    transition: border-color 0.3s ease-in-out;
+    font-size: 16px;
 }
 
-#generarBtn:hover {
-    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+input[type="text"]:focus {
+    /* Borde morado al hacer foco */
+    border-color: #8a2be2;
+    outline: none;
 }
 
-/* El contenedor donde irá el QR */
-#qrContenedor {
-    width: 256px;
-    height: 256px;
-    margin: 25px auto 0;
-    /* Borde suave por si está vacío */
-    border: 1px solid #eee; 
-    border-radius: 8px;
-    padding: 10px; /* Un pequeño margen interno */
-    box-sizing: border-box; /* Para que el padding no lo haga más grande */
+button {
+    padding: 12px 30px;
+    border: none;
+    /* Degradado morado/azul para el botón */
+    background: linear-gradient(to right, #8a2be2, #007bff);
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    width: 100%;
+}
+
+button:hover {
+    /* Intercambia el degradado al pasar el ratón */
+    background: linear-gradient(to right, #007bff, #8a2be2);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+}
+
+#qrcode {
+    margin: 30px auto 0;
+    padding: 10px;
+    /* Borde oscuro para el contenedor del QR */
+    border: 2px dashed #444;
+    border-radius: 10px;
+    width: 256px; /* Ajustamos al tamaño del QR */
+    height: 256px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* Fondo blanco para el QR */
 }
 
 /* El QR (la imagen) que genera la librería */
-#qrContenedor img {
-    width: 100% !important;
-    height: 100% !important;
+#qrcode img {
     border-radius: 4px;
+}
+
+/* El botón de descarga */
+#downloadBtn {
+    display: none; /* Oculto por defecto */
+    margin-top: 20px;
+    text-decoration: none;
+    /* Un color verde que destaca para "descargar" */
+    background-color: #28a745;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#downloadBtn:hover {
+    background-color: #218838;
+}
+
+/* Para móviles */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
 }

@@ -1,47 +1,73 @@
 // Esperamos a que toda la página (HTML) esté cargada
-// Esto asegura que los botones e inputs ya existen cuando el script se ejecuta
 document.addEventListener("DOMContentLoaded", () => {
     
     // "Pillamos" los elementos que necesitamos del HTML
-    const boton = document.getElementById("generarBtn");
+    const boton = document.getElementById("generateBtn");
     const input = document.getElementById("urlInput");
-    const contenedorQR = document.getElementById("qrContenedor");
+    const contenedorQR = document.getElementById("qrcode");
+    
+    // Novedad: Pillamos el botón de descarga
+    const downloadBtn = document.getElementById("downloadBtn");
 
-    // Inicializamos el objeto QRCode y le decimos dónde pintar (en "qrContenedor")
-    // Lo creamos una sola vez
-    // NOTA: "QRCode" existe gracias a la librería que cargamos en el HTML
+    // Inicializamos el objeto QRCode
     const qr = new QRCode(contenedorQR, {
-        width: 234, // Lo hacemos un poco más pequeño que el contenedor (256 - 10 - 10)
-        height: 234,
+        width: 256, // Ajustado al tamaño del contenedor
+        height: 256,
         colorDark: "#000000",
         colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H // Alta corrección de errores
+        correctLevel: QRCode.CorrectLevel.H
     });
 
     // Función para generar el QR
     function generarCodigo() {
         const url = input.value; // Cogemos el texto del input
 
-        // Comprobamos si el input está vacío
         if (!url) {
-            // Usamos alert() porque no nos queremos complicar con modales bonitos
             alert("¡Pega una URL primero, compi!"); 
-            input.focus(); // Ponemos el foco en el input para que escriba
+            input.focus();
             return;
         }
-
-        // Si ya había un QR, lo limpiamos
+        
+        // 1. Limpiamos el QR anterior y ocultamos el botón de descarga
         qr.clear();
-        // Creamos el nuevo código QR con la URL
+        downloadBtn.style.display = 'none';
+
+        // 2. Creamos el nuevo código QR
         qr.makeCode(url);
 
         console.log("QR generado para:", url);
+
+        // 3. (IMPORTANTE) Esperamos un poquitín (50ms) a que la librería
+        //    genere la etiqueta <img> del QR dentro del contenedor.
+        //    No podemos coger la imagen en el mismo instante.
+        setTimeout(() => {
+            // Buscamos la imagen que la librería ha creado
+            const img = contenedorQR.querySelector('img');
+            
+            if (img) {
+                // Cogemos la fuente de la imagen (que es data:image/png;base64,...)
+                const imgSrc = img.src;
+
+                // 4. Configuramos el botón de descarga
+                downloadBtn.href = imgSrc;
+                
+                // Creamos un nombre de archivo dinámico
+                // (ej. "qr-google_com.png")
+                const nombreArchivo = `qr-${url.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.png`;
+                downloadBtn.download = nombreArchivo;
+                
+                // 5. Mostramos el botón de descarga
+                downloadBtn.style.display = 'block'; // Lo mostramos como bloque
+            } else {
+                console.error("No se pudo encontrar la imagen del QR.");
+            }
+        }, 50); // 50 milisegundos de espera
     }
 
     // "Escuchador" de evento para el clic en el botón
     boton.addEventListener("click", generarCodigo);
 
-    // (Opcional) Generar también al pulsar "Enter" en el input
+    // Generar también al pulsar "Enter"
     input.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             generarCodigo();
